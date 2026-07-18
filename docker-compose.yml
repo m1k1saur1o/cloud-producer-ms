@@ -1,0 +1,17 @@
+services:
+  producer-ms:
+    build: .
+    container_name: producer-ms
+    ports:
+      - "8080:8080"
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
